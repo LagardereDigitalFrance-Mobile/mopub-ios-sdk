@@ -235,7 +235,10 @@
         [self loadAdWithURL:self.requestingConfiguration.failoverURL];
         return;
     }
-
+   if(self.delegate.containerSize.width<1){
+        MPLogWarn(@"Could not load ad: wrong banner size");
+        return;
+    }
     [self.requestingAdapter _getAdWithConfiguration:configuration containerSize:self.delegate.containerSize];
 }
 
